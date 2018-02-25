@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  description: "Mobile Rest API"
+  version: "1.0.0"
+  title: "Mobile API"
+  termsOfService: "https://sunrise.ch/legal"
+  contact:
+    email: "api-support@sunrise.ch"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api.sunrise.ch"
+basePath: "/mobile/v1"
+schemes:
+- "http"
+paths:
+ /mobile/info:
+    get:
+      tags :
+      - Mobile
+      summary: Mobile API Info
+      description: Mobile API Info
+      operationId: getInfo
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/MobileInfo'
+securityDefinitions:
+  mobile_auth:
+    type: basic
+definitions:
+  MobileInfo:
+    type: object
+    properties:
+      title:
+        type: string
+      message:
+        type: string

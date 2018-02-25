@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  description: "Core Rest API"
+  version: "1.0.0"
+  title: "Mobile API"
+  termsOfService: "https://sunrise.ch/legal"
+  contact:
+    email: "api-support@sunrise.ch"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api.sunrise.ch"
+basePath: "/core/v1"
+schemes:
+- "http"
+paths:
+ /core/info:
+    get:
+      tags :
+      - Core
+      summary: Core API Info
+      description: Core API Info
+      operationId: getInfo
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CoreInfo'
+ /core/mobile/info:
+    get:
+      tags :
+      - Core
+      summary: Exposes limited Mobile API Info
+      description: Exposes limited Mobile API Info
+      operationId: getMobileInfo
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/LimitedMobileInfo'
+securityDefinitions:
+  core_auth:
+    type: basic
+definitions:
+  CoreInfo:
+    type: object
+    properties:
+      title:
+        type: string
+      message:
+        type: string
+  LimitedMobileInfo:
+      type: object
+      properties:
+        title:
+          type: string
